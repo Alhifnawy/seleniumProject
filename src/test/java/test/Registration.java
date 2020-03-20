@@ -16,26 +16,13 @@ import org.testng.annotations.AfterMethod;
 //import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 
-public class Registration {
-
-	WebDriver driver;
-
-	ChromeBrowser chrome = new ChromeBrowser();
-	Homepage homePage = new Homepage(chrome.driver);
-	LoginPage loginPage = new LoginPage(chrome.driver);
-	RegistrationPage registerPage = new RegistrationPage(chrome.driver);
-	MyAccountPage MyAccount = new MyAccountPage(chrome.driver);
-
-	@BeforeMethod
-	public void beforeMethod() {
-		chrome.OpenWebsite("http://www.automationpractice.com");
-	}
+public class Registration extends TestBase{
 
 	@Test(priority = 1)
 	public void RegisterWithMandatoryFieldsOnly() throws InterruptedException {
 
 		homePage.GoToLoginPage();
-		loginPage.enterEmailAddress("abnnab@abc.com");
+		loginPage.enterEmailAddress("abnnaahbm@abc.com");
 		loginPage.clickonCreateAnAccountBTN();
 
 		registerPage.setFirstName("Abdurahman");
@@ -59,7 +46,7 @@ public class Registration {
 	public void InvalidRegisterOne() throws InterruptedException {
 
 		homePage.GoToLoginPage();
-		loginPage.enterEmailAddress("abnma@abc.com");
+		loginPage.enterEmailAddress("abnman@abc.com");
 		loginPage.clickonCreateAnAccountBTN();
 
 		registerPage.setLastName("Alhifnawy");
@@ -77,19 +64,4 @@ public class Registration {
 
 		Assert.assertTrue(registerPage.GetAlert().toLowerCase().contains("firstname is required"));
 	}
-
-	@AfterMethod
-	public void afterMethod() {
-		try {
-			MyAccount.signOut();
-		} catch (Exception e) {
-
-		}
-	}
-
-	@AfterTest
-	public void afterTest() {
-		chrome.closeBrowser();
-	}
-
 }
