@@ -9,7 +9,7 @@ public class ChromeBrowser {
 
 	public ChromeBrowser() {
 		
-		System.setProperty("webdriver.chrome.driver", "D:\\Courses\\ITShare\\Sources\\Selenium Drivers\\windows-64\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 		
 		driver = new ChromeDriver();
 		
